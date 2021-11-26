@@ -13,7 +13,8 @@ class DataLoader():
         r = requests.get(self.url)
         x = r.json()
         web_data = pd.DataFrame(x['results'])
-        self.data = pd.concat([web_data, web_data['url'].apply(lambda x: pd.Series(requests.get(x).json()))], axis = 1)
+        self.data =  web_data['url'].apply(lambda x: pd.Series(requests.get(x).json()))
+        # self.data = pd.concat([web_data, web_data['url'].apply(lambda x: pd.Series(requests.get(x).json()))], axis = 1)
 
     def __format_data__(self):
         self.data['moves_len'] = self.data['moves'].apply(lambda x: len(x))
@@ -24,7 +25,7 @@ class DataLoader():
             .apply(lambda x: pd.Series({stat['stat']['name']: stat['base_stat'] for stat in x}))],axis=1)
 
         self.data['main_type'] = self.data['types'].apply(lambda x: x[0]['type']['name'])
-        self.data = self.data.drop(['url', 'held_items', 'location_area_encounters', 'moves', 'abilities', 'stats', 'types',
+        self.data = self.data.drop(['held_items', 'location_area_encounters', 'moves', 'abilities', 'stats', 'types',
                         'forms', 'game_indices', 'past_types', 'species', 'sprites'], axis=1)
 
     
