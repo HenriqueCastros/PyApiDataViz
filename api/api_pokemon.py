@@ -1,6 +1,8 @@
 from flask import Flask, Response
 from flask_restful import Resource, Api
 from .database import Database 
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -8,9 +10,8 @@ print("Building API...")
 app = Flask(__name__)
 api = Api(app)
 db = Database('https://pokeapi.co/api/v2/pokemon?limit=151')
-db.save_data('./data/db.csv')
+db.save_data('./db.csv')
 
-plt.ioff()
 sns.set_style('darkgrid')
 sns.set(rc={'figure.figsize':(16,6)})
 pallete = sns.color_palette('deep')
