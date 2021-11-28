@@ -2,4 +2,4 @@ __pycache__
 *.csv
 *.ipynb
 /data/*
-*.png
+!/last_request/*
