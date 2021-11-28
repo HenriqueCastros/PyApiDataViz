@@ -25,6 +25,14 @@ Run the **app.py** file and wait for it to load all the dataset. Once all the da
 python app.py
 ```
 
+## Endpoints
+
+| Endpoint |  |
+| ------------- |:-------------:|
+| /pokemon     | List all pokemons on the dataset   |
+| /pokemon/<id>      | Retrives a specific Pokemon     |
+| /pokemon_stats      | Retrives stats for each type of pokemon and plots graphs    |
+
 ## To be developed
 - [ ] Allow filtering for one specific pokemon type.
 - [ ] Allow filtering for one pokemon stat.
