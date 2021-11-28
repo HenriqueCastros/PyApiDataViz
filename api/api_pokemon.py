@@ -10,6 +10,9 @@ api = Api(app)
 db = Database('https://pokeapi.co/api/v2/pokemon?limit=151')
 db.save_data('./data/db.csv')
 
+plt.ioff()
+sns.set_style('darkgrid')
+sns.set(rc={'figure.figsize':(16,6)})
 pallete = sns.color_palette('deep')
 new_palette = dict(water=pallete[0], fire=pallete[3], bug=pallete[2], normal=pallete[5], poison=pallete[4], other=pallete[7])
 
@@ -23,7 +26,7 @@ class PokemonStat(Resource):
         sns.jointplot(x=db.data['attack'], y=db.data['defense'], kind='reg')
         plt.savefig('./last_request/scatter.png')
 
-        sns.pairplot(db.data[['attack', 'defense', 'special-attack', 'special-defense', 'speed']])
+        sns.pairplot(db.data[['attack', 'defense', 'speed']])
         plt.savefig('./last_request/pairplot.png')
 
     def get(self):
@@ -43,4 +46,5 @@ class Pokemon(Resource):
 
 api.add_resource(Pokemon, '/pokemon/<int:pokemon_id>')
 api.add_resource(PokemonList, '/pokemon')
+api.add_resource(PokemonStat, '/pokemon_stats')
 print('API ready to run!')
