@@ -30,8 +30,8 @@ python app.py
 | Endpoint |  |
 | ------------- |:-------------:|
 | /pokemon     | List all pokemons on the dataset   |
-| /pokemon/<id>      | Retrives a specific Pokemon     |
-| /pokemon_stats      | Retrives stats for each type of pokemon and plots graphs    |
+| /pokemon/<id>      | Retrieves a specific Pokemon     |
+| /pokemon_stats      | Retrieves stats for each type of pokemon and plots graphs    |
 
 ## To be developed
 - [ ] Allow filtering for one specific pokemon type.
